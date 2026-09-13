@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>ARAM EdTech Hub | 에듀테크 경험을 연결합니다</title>
+  
+  <!-- Pretendard 고가독성 한글 폰트 & JetBrains Mono -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6.5 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            edpurple: {
+              50: '#FAF5FF',
+              100: '#F3E8FF',
+              200: '#E9D5FF',
+              500: '#A855F7',
+              600: '#8B3DFF',
+              700: '#7E22CE',
+              800: '#6B21A8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      word-break: keep-all;
+      letter-spacing: -0.02em;
+    }
+
+    .text-fluid-hero { font-size: clamp(1.85rem, 4vw + 0.5rem, 3.25rem); line-height: 1.25; }
+    .text-fluid-title { font-size: clamp(1.25rem, 2vw + 0.3rem, 1.75rem); line-height: 1.35; }
+    .text-fluid-card-title { font-size: clamp(0.95rem, 0.8vw + 0.4rem, 1.15rem); line-height: 1.4; }
+    .text-fluid-body { font-size: clamp(0.85rem, 0.4vw + 0.65rem, 1rem); line-height: 1.6; }
+    .text-fluid-sm { font-size: clamp(0.75rem, 0.25vw + 0.65rem, 0.875rem); }
+
+    .badge-purple {
+      background-color: #F4EBFF;
+      color: #8B3DFF;
+      font-weight: 600;
+    }
+    .badge-gray {
+      background-color: #F2F4F7;
+      color: #667085;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body class="bg-[#F8F9FC] text-slate-800 antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <!-- 상단 네비게이션 바 -->
+  <header class="sticky top-0 z-50 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center space-x-2">
+        <span class="text-xl sm:text-2xl font-black text-[#8B3DFF] tracking-tight flex items-center">
+          aram<span class="text-slate-900 font-extrabold">edtech</span>
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+        <a href="#hero" class="text-[#8B3DFF] border-b-2 border-[#8B3DFF] py-5 font-bold transition">지식아카이브</a>
+        <a href="#curriculum" class="hover:text-[#8B3DFF] transition py-5">활용사례</a>
+        <a href="#ai-tools" class="hover:text-[#8B3DFF] transition py-5">GPT-AI 정보</a>
+        <a href="#video-lectures" class="hover:text-[#8B3DFF] transition py-5">영상편집 랩</a>
+      </nav>
+
+      <div class="flex items-center space-x-3">
+        <button class="text-slate-500 hover:text-slate-800 p-2 transition">
+          <i class="fa-solid fa-magnifying-glass text-base"></i>
+        </button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7F1an6ycSiKAf6k--IqgIBWQtDxa5-7_wa8I2TZIs6cFRnA/viewform" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#8B3DFF] hover:bg-[#782ee6] text-white font-bold text-xs sm:text-sm rounded-lg transition shadow-sm">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span>교육상담(문의)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 히어로 섹션 -->
+  <section id="hero" class="pt-8 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+      
+      <!-- 좌측 배너 -->
+      <div class="lg:col-span-8 bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm relative overflow-hidden">
+        <div class="space-y-4 max-w-xl z-10">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <span>함께 고민하고, 배우고, 성장하는 AramEdTech 커뮤니티</span>
+          </div>
+          <h1 class="text-fluid-hero font-extrabold text-slate-900 tracking-tight leading-tight">
+            디지털과 AI의 경험을<br>
+            <span class="text-[#8B3DFF]">연결합니다</span>
+          </h1>
+          <p class="text-fluid-body text-slate-600 font-normal leading-relaxed pt-1">
+            스마트폰 모바일 리터러시부터 컴퓨터 실무, 최신 생성형 인공지능까지.<br class="hidden sm:inline">
+            현장 교실과 실무 환경에서 즉시 통하는 맞춤형 교육 솔루션을 제공합니다.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2.5">
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-50 text-[#8B3DFF] border border-purple-200">
+              🏆 한국표준협회·한국인터넷진흥원 우수강사 표창
+            </span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">
+              한국소프트웨어산업협회 특급기술자
+            </span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">
+              디지털배움터·SW미래채움 전문강사
+            </span>
+          </div>
+        </div>
+
+        <div class="shrink-0 flex items-center justify-center p-4">
+          <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-gradient-to-br from-purple-100 via-indigo-50 to-amber-50 border border-purple-100 flex flex-col items-center justify-center shadow-inner relative">
+            <div class="w-16 h-16 rounded-2xl bg-[#8B3DFF] text-white flex items-center justify-center text-3xl shadow-lg shadow-purple-300/50 mb-3 animate-bounce">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">아람에듀테크 허브</span>
+            <span class="text-[11px] font-mono text-purple-600 font-semibold mt-0.5">LEARNING & AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측 마켓맵 배너 -->
+      <div class="lg:col-span-4 bg-[#F5F3FF] border border-purple-200/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-sm relative overflow-hidden">
+        <div class="w-full flex justify-center py-4">
+          <div class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-amber-200 via-amber-100 to-yellow-50 flex items-center justify-center shadow-md border border-amber-200">
+            <i class="fa-solid fa-map-location-dot text-amber-600 text-4xl"></i>
+          </div>
+        </div>
+        <div class="space-y-2 my-auto">
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            2026 아람에듀테크 마켓맵<br>
+            <span class="text-[#8B3DFF]">보러가기</span>
+          </h3>
+          <p class="text-xs text-slate-500">교육 현장에 필요한 최신 AI 도구와 자료 모음</p>
+        </div>
+        <a href="#ai-tools" class="w-full mt-4 py-3 bg-[#8B3DFF] hover:bg-[#782ee6] text-white text-xs sm:text-sm font-bold rounded-xl transition text-center shadow-sm">
+          생성형 AI 디렉토리 탐색 →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PICK! 지금 뜨는 디지털 & 에듀테크 이슈 -->
+  <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+        <span class="text-[#8B3DFF] font-black">PICK!</span> 지금 뜨는 디지털 & 에듀테크 이슈
+      </h2>
+    </div>
+
+    <!-- 4열 카드 그리드 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- 카드 1 -->
+      <a href="https://ai-kang-ui-w5jmuey.gamma.site/" target="_blank" rel="noopener noreferrer"
+         class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-purple-300 transition flex flex-col group cursor-pointer">
+        <div class="bg-slate-900 p-5 text-white flex flex-col justify-between h-36 relative group-hover:bg-slate-800 transition">
+          <span class="text-[10px] font-mono text-purple-300">EDTECH BRIEF</span>
+          <h4 class="text-sm font-bold leading-snug group-hover:text-purple-200 transition">누구나 자기주도적으로 학습할 수 있는 올바른 AI 사용법</h4>
+          <span class="text-[10px] text-slate-400">자기주도형 인공지능 교수법</span>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-[11px] px-2 py-0.5 rounded badge-purple">오리지널</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">AI 윤리</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">자기주도</span>
+          </div>
+          <p class="text-xs text-slate-600 font-normal leading-relaxed line-clamp-2">
+            초보자부터 강사까지 바로 활용 가능한 자기주도형 생성형 인공지능 교수법
+          </p>
+        </div>
+      </a>
+
+      <!-- 카드 2 -->
+      <a href="#curriculum" 
+         class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-purple-300 transition flex flex-col group cursor-pointer">
+        <div class="bg-[#182230] p-5 text-white flex flex-col justify-between h-36 relative group-hover:bg-[#1f2c3f] transition">
+          <span class="text-[10px] font-mono text-emerald-300">K-12 MOBILE GUIDE</span>
+          <h4 class="text-sm font-bold leading-snug group-hover:text-emerald-200 transition">스마트폰 조작부터 앱 활용까지, 11차시 완성 커리큘럼</h4>
+          <span class="text-[10px] text-slate-400">모바일 리터러시 표준 교안</span>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-[11px] px-2 py-0.5 rounded badge-purple">기사</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">스마트폰</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">기초과정</span>
+          </div>
+          <p class="text-xs text-slate-600 font-normal leading-relaxed line-clamp-2">
+            알림창 설정, 저장공간 관리, 카메라 갤러리 및 계정 연동 전 과정 총망라
+          </p>
+        </div>
+      </a>
+
+      <!-- 카드 3 -->
+      <a href="#curriculum"  
+         class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-purple-300 transition flex flex-col group cursor-pointer">
+        <div class="bg-[#1E1B4B] p-5 text-white flex flex-col justify-between h-36 relative group-hover:bg-[#282463] transition">
+          <span class="text-[10px] font-mono text-indigo-300">PRACTICAL WORK</span>
+          <h4 class="text-sm font-bold leading-snug group-hover:text-indigo-200 transition">컴퓨터 기초, 디자인 툴 및 사이버 범죄 예방</h4>
+          <span class="text-[10px] text-slate-400">실무 중심 디지털 소양</span>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-[11px] px-2 py-0.5 rounded badge-purple">활용사례</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">미리캔버스</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">보안</span>
+          </div>
+          <p class="text-xs text-slate-600 font-normal leading-relaxed line-clamp-2">
+            크롬 웹브라우징, 게더타운 메타버스, QR코드 생성과 디지털 금융 사기 방지
+          </p>
+        </div>
+      </a>
+
+      <!-- 카드 4 -->
+      <a href="#video-lectures"
+         class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-purple-300 transition flex flex-col group cursor-pointer">
+        <div class="bg-[#172554] p-5 text-white flex flex-col justify-between h-36 relative group-hover:bg-[#1e326f] transition">
+          <span class="text-[10px] font-mono text-sky-300">MEDIA WORKSHOP</span>
+          <h4 class="text-sm font-bold leading-snug group-hover:text-sky-200 transition">영상편집 마스터클래스: 캡컷, 블로, 필모라, 브루</h4>
+          <span class="text-[10px] text-slate-400">크리에이터 필수 도구</span>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-[11px] px-2 py-0.5 rounded badge-purple">인기</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">CapCut</span>
+            <span class="text-[11px] px-2 py-0.5 rounded badge-gray">Vrew</span>
+          </div>
+          <p class="text-xs text-slate-600 font-normal leading-relaxed line-clamp-2">
+            자동 자막 생성부터 모바일 숏폼, 1시간 컷편집 완성 유튜브 가이드
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 활용사례 & 커리큘럼 아카이브 -->
+  <section id="curriculum" class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="border-b border-slate-200 pb-3 mb-6 flex items-center justify-between">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">교육 커리큘럼 아카이브</h2>
+        <p class="text-xs text-slate-500 mt-1">실무 현장에서 바로 열람 가능한 모듈별 정규 강의 자료</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- 모듈 1: 스마트폰 -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-purple-300 transition shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-[#8B3DFF] bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">MODULE 01</span>
+            <i class="fa-solid fa-mobile-screen text-slate-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1">스마트폰 마스터 과정</h3>
+          <p class="text-xs text-slate-500 mb-4">기본 조작부터 필수 앱 실무 완벽 정복</p>
+          
+          <div class="space-y-2 text-xs">
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/0e6ffe2a7c73419bad1526a96f172697/original/1-seumateuponiran-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>1) 스마트폰이란?</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/5ef4474477d1468ebebf8a6e93df97a4/original/2-seumateupon-hwamyeonguseong-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>2) 스마트폰 화면구성</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/0b41564968e44402b382a3d131ef4961/original/3-sangdanba-alrimcang-seoljeong-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>3) 상단바, 알림창 설정</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/8d3b6918838b410b855fb6d44abdcaf1/original/4-deiteowaipai-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>4) 데이터 와이파이</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/89e05f9b04cc469fae5788a1355ccf5e/original/5-diseupeulrei-jeojanggonggan-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>5) 디스플레이 저장공간</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/03bd1c5c4723480895a6bb86a8419717/original/6-jeonhwa-yeonragceoaeb-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>6) 전화연락처앱</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/35e8d34a84834ffdb85ede4580f255b3/original/7-mesijiaeb-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>7) 메세지앱</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/047298374fb94d289095a2166aae3b43/original/8-eumseongnogeum-memo-gyesangi-aeb-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>8) 음성녹음, 메모, 계산기앱</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/682732da69214786ba8e9e25d6dc283d/original/9-kameraaeb-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>9) 카메라앱</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/d542e21d0797407e8152e5aec675233b/original/10-gaelreoriaeb-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>10) 갤러리앱</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/b22015e713124f1e99877ecc8244fcab/original/11-gyejeongiran-aebseolcisagjebangbeob-1h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>11) 계정관리</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모듈 2: 컴퓨터 -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-purple-300 transition shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md">MODULE 02</span>
+            <i class="fa-solid fa-desktop text-slate-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1">컴퓨터 & 실무 리터러시</h3>
+          <p class="text-xs text-slate-500 mb-4">웹 브라우징 최적화 및 온라인 디자인</p>
+          
+          <div class="space-y-2 text-xs">
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/54ce29767231499191d740518258a2b4/original/keuromwebbeuraujeo_sayongbeob.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>1) 크롬(Chrome) 브라우저 활용법</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/57f17837b7b948448d2d899a99339360/original/mirikaenbeoseu-Pixabay.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>2) 미리캔버스 & Pixabay 디자인</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/3cf48a59fa8843e2b05da0eb8d7aee7c/original/metabeoseu_gedeotaun.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>3) 메타버스 게더타운(Gather) 기초</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/6c7c56e74ed04c70ace52ce8cc5c5e6a/original/saibeobeomjoe_yebanggyoyug.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>4) 사이버범죄 & 금융사기 예방</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/5206b70d3c0048d183017c4c4dde9ca1/original/kyualkodeu-2h.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>5) 큐알코드(QR Code) 생성과 활용</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모듈 3: AI 실습 -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-purple-300 transition shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">MODULE 03</span>
+            <i class="fa-solid fa-brain text-slate-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1">인공지능 실습 랩</h3>
+          <p class="text-xs text-slate-500 mb-4">노코드 머신러닝 & 비주얼 제너레이션</p>
+          
+          <div class="space-y-2 text-xs">
+            <a href="https://ai-education-kmq5pgc.gamma.site/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>1) 인공지능(AI) 기본 개념과 프레임워크</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/3ad430fd758d49a78c30b12312613790/original/Artificial-Intelligence-jyppro.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>2) 인공지능 심화교육</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://ai--mon8ub4.gamma.site/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>3) 생산성 업무혁신</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://cdn.gamma.app/j7etg7xb8vwmnq7/9e553cdcb45543e7a324aa72bec23b11/original/2024-gongmojeon-gangsayongPPT-daesang_nuguna-jagijudojeogeuro-hagseubhal-su-issneun-olbareun-AI-sayongbeob.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>4) 올바른 AI 사용법(디지털배움터 2024공모전 대상)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>5) 구글 티처블 머신 (Teachable Machine)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://quickdraw.withgoogle.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>6) 퀵, 드로우! (Quick, Draw!)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://www.autodraw.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>7) 오토드로우 (AutoDraw) 스케치</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+            <a href="https://clipdrop.co/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-purple-50 hover:text-[#8B3DFF] transition group">
+              <span>8) Clipdrop Sketch to Image 실습</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400 group-hover:text-[#8B3DFF]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 제품 정보 & 글로벌 생성형 AI 디렉토리 -->
+  <section id="ai-tools" class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="border-b border-slate-200 pb-3 mb-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">제품 정보 & AI 툴킷</h2>
+      </div>
+      <p class="text-xs text-slate-500 mt-1">수업과 교육 실무에서 즉시 도입 가능한 검증된 에듀테크 및 생성형 인공지능 플랫폼</p>
+    </div>
+
+    <div class="space-y-6">
+      <!-- 01 대화형 LLM 및 신경망 검색 -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="text-xs font-mono font-bold text-[#8B3DFF] mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-comment-dots"></i> CONVERSATIONAL LLM & NEURAL SEARCH
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#FAF8FF] border border-purple-100 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">ChatGPT</span>
+            <span class="text-[10px] text-slate-400">OpenAI</span>
+          </a>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#FAF8FF] border border-purple-100 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Gemini</span>
+            <span class="text-[10px] text-slate-400">Google</span>
+          </a>
+          <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#FAF8FF] border border-purple-100 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Claude</span>
+            <span class="text-[10px] text-slate-400">Anthropic</span>
+          </a>
+          <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#FAF8FF] border border-purple-100 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Perplexity</span>
+            <span class="text-[10px] text-slate-400">AI Search</span>
+          </a>
+          <a href="https://wrtn.ai" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#FAF8FF] border border-purple-100 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">뤼튼 (Wrtn)</span>
+            <span class="text-[10px] text-slate-400">Portal</span>
+          </a>
+          <a href="https://genspark.ai" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#FAF8FF] border border-purple-100 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Genspark</span>
+            <span class="text-[10px] text-slate-400">AI Agent</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 02 비주얼 & 그래픽 디자인 생성 도구 -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="text-xs font-mono font-bold text-slate-700 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-palette text-amber-500"></i> VISUAL ART & DESIGN AI
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 border border-slate-200 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Midjourney</span>
+            <span class="text-[10px] text-slate-400">Generative</span>
+          </a>
+          <a href="https://designer.microsoft.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 border border-slate-200 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">MS Designer</span>
+            <span class="text-[10px] text-slate-400">Microsoft</span>
+          </a>
+          <a href="https://canva.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 border border-slate-200 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Canva</span>
+            <span class="text-[10px] text-slate-400">Visual Suite</span>
+          </a>
+          <a href="https://clipdrop.co" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 border border-slate-200 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Clipdrop</span>
+            <span class="text-[10px] text-slate-400">Image Edit</span>
+          </a>
+          <a href="https://firefly.adobe.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 border border-slate-200 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Firefly</span>
+            <span class="text-[10px] text-slate-400">Adobe AI</span>
+          </a>
+          <a href="https://stablediffusionweb.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 border border-slate-200 hover:border-[#8B3DFF] rounded-xl text-center group transition">
+            <span class="text-xs font-bold text-slate-900 block group-hover:text-[#8B3DFF]">Stable Diff.</span>
+            <span class="text-[10px] text-slate-400">Open Source</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 비디오 / 오디오 / 업무생산성 3열 벤토 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- 비디오 AI -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h4 class="text-xs font-mono font-bold text-rose-600 mb-3 flex items-center justify-between">
+            <span>VIDEO GENERATION</span>
+            <i class="fa-solid fa-video"></i>
+          </h4>
+          <div class="space-y-1.5 text-xs">
+            <a href="https://flow.google.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Gemini Flow</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://runwayml.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Runway</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://klingai.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Kling AI</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://heygen.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">HeyGen Avatar</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://hedra.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Hedra Character</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 오디오 AI -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h4 class="text-xs font-mono font-bold text-emerald-600 mb-3 flex items-center justify-between">
+            <span>AUDIO & MUSIC</span>
+            <i class="fa-solid fa-music"></i>
+          </h4>
+          <div class="space-y-1.5 text-xs">
+            <a href="https://suno.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Suno AI (작곡)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://udio.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Udio Music</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://mix.audio" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Mix.audio</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://vocalremover.org/ko/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Vocal Remover</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 생산성 & 문서 AI -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h4 class="text-xs font-mono font-bold text-[#8B3DFF] mb-3 flex items-center justify-between">
+            <span>WORKFLOW & DOCS</span>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </h4>
+          <div class="space-y-1.5 text-xs">
+            <a href="https://notebooklm.google" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Gemini Notebook(NotebookLM)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://canva.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Canva</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://gamma.app" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Gamma App</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://www.napkin.ai" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">Napkin AI</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+            <a href="https://deepl.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <span class="font-medium text-slate-700">DeepL Translator</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 추천 영상편집 도구 & 유튜브 특강 -->
+  <section id="video-lectures" class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="border-b border-slate-200 pb-3 mb-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">추천 영상편집 도구 & 유튜브 특강</h2>
+      <p class="text-xs text-slate-500 mt-1">각 편집 도구 명칭 또는 강의 항목을 클릭하면 해당 학습 영상으로 이동합니다</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- 1. CapCut (캡컷) -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:border-purple-300 transition">
+        <div>
+          <a href="https://www.youtube.com/watch?v=1CvCBk4hcXc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 mb-3 group">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs group-hover:bg-[#8B3DFF] transition">CAP</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900 group-hover:text-[#8B3DFF] transition flex items-center gap-1">
+                CapCut (캡컷) <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+              </h4>
+              <span class="text-[11px] text-slate-400">스마트폰 & PC 편집</span>
+            </div>
+          </a>
+          
+          <ul class="text-xs text-slate-600 space-y-2 mt-2 mb-4">
+            <li>
+              <a href="https://www.youtube.com/watch?v=1CvCBk4hcXc" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>폰으로 무료 영상편집 기본 마스터</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=m-w19-qsadI" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>캡컷 PC 영상 기본편집 1시간 정복</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/results?search_query=2025+%EC%BA%A1%EC%BB%B7+%EC%B5%9C%EC%8B%A0%ED%8C%90+%ED%95%9C%EA%B8%80%EB%B2%84%EC%A0%84+%EA%B0%95%EC%9D%98" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>2025 최신판 한글버전 완벽 마스터</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex gap-2 pt-3 border-t border-slate-100">
+          <a href="https://www.youtube.com/watch?v=1CvCBk4hcXc" target="_blank" rel="noopener noreferrer" 
+             class="flex-1 py-2 rounded-lg bg-purple-50 text-[#8B3DFF] hover:bg-purple-100 font-bold text-xs text-center transition flex items-center justify-center gap-1">
+            <i class="fa-brands fa-youtube"></i> 특강 보기
+          </a>
+          <a href="https://www.capcut.com/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-lg text-xs font-semibold">설치</a>
+        </div>
+      </div>
+
+      <!-- 2. VLLO (블로) -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:border-purple-300 transition">
+        <div>
+          <a href="https://www.youtube.com/watch?v=WPHh8SgBDwc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 mb-3 group">
+            <div class="w-10 h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center font-bold text-xs group-hover:bg-[#8B3DFF] transition">VLLO</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900 group-hover:text-[#8B3DFF] transition flex items-center gap-1">
+                VLLO (블로) <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+              </h4>
+              <span class="text-[11px] text-slate-400">모바일 일상 브이로그</span>
+            </div>
+          </a>
+
+          <ul class="text-xs text-slate-600 space-y-2 mt-2 mb-4">
+            <li>
+              <a href="https://www.youtube.com/watch?v=WPHh8SgBDwc" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>핸드폰 영상편집! 엄마아빠 유튜브</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/results?search_query=%EB%8F%99%EC%98%81%EC%83%81+%ED%8E%B8%EC%A7%91%EC%96%B4%ED%pleub+%EB%B8%94%EB%A1%9C+vllo+%EC%82%AC%EC%9A%A9%EB%B2%95" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>블로(VLLO) 사용법 천천히 뜯어보기</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.vllo.net/" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-solid fa-book-open text-purple-500 mt-0.5"></i>
+                <span>VLLO 공식 가이드 & 기능 살펴보기</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex gap-2 pt-3 border-t border-slate-100">
+          <a href="https://www.youtube.com/watch?v=WPHh8SgBDwc" target="_blank" rel="noopener noreferrer" 
+             class="flex-1 py-2 rounded-lg bg-purple-50 text-[#8B3DFF] hover:bg-purple-100 font-bold text-xs text-center transition flex items-center justify-center gap-1">
+            <i class="fa-brands fa-youtube"></i> 특강 보기
+          </a>
+          <a href="https://www.vllo.net/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-lg text-xs font-semibold">공식</a>
+        </div>
+      </div>
+
+      <!-- 3. Filmora 14 (필모라) -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:border-purple-300 transition">
+        <div>
+          <a href="https://www.youtube.com/watch?v=p1RJ9J8zr6U" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 mb-3 group">
+            <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-xs group-hover:bg-[#8B3DFF] transition">FIL</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900 group-hover:text-[#8B3DFF] transition flex items-center gap-1">
+                Filmora 14 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+              </h4>
+              <span class="text-[11px] text-slate-400">AI 스마트 숏클립 제작</span>
+            </div>
+          </a>
+
+          <ul class="text-xs text-slate-600 space-y-2 mt-2 mb-4">
+            <li>
+              <a href="https://www.youtube.com/watch?v=p1RJ9J8zr6U" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>필모라14 새로운 AI 동영상 변환</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/results?search_query=Filmora14+%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8+%EB%A9%80%ED%8B%B0%EC%B9%B4%EB%A9%94%EB%9D%BC+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%87%BF%ED%81%B4%EB%A6%BD" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>멀티카메라 & 스마트 숏클립 기능</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/results?search_query=Filmora14+AI+%EB%B2%88%EC%97%AD+%EB%A6%BD%EC%8B%B1%ED%81%AC" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>AI 번역 립싱크 및 자동 리프레임</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex gap-2 pt-3 border-t border-slate-100">
+          <a href="https://www.youtube.com/watch?v=p1RJ9J8zr6U" target="_blank" rel="noopener noreferrer" 
+             class="flex-1 py-2 rounded-lg bg-purple-50 text-[#8B3DFF] hover:bg-purple-100 font-bold text-xs text-center transition flex items-center justify-center gap-1">
+            <i class="fa-brands fa-youtube"></i> 특강 보기
+          </a>
+          <a href="https://filmora.wondershare.kr/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-lg text-xs font-semibold">공식</a>
+        </div>
+      </div>
+
+      <!-- 4. Vrew (브루) -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:border-purple-300 transition">
+        <div>
+          <a href="https://www.youtube.com/results?search_query=%EC%89%BD%EA%B3%A0+%ED%8E%B8%ED%95%9C+AI+%EC%98%81%EC%83%81%ED%8E%B8%EC%A7%91%EA%B8%B0+%EB%B8%8C%EB%A3%A8+Vrew" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 mb-3 group">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs group-hover:bg-[#8B3DFF] transition">VREW</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900 group-hover:text-[#8B3DFF] transition flex items-center gap-1">
+                Vrew (브루) <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+              </h4>
+              <span class="text-[11px] text-slate-400">AI 자동자막 & 컷편집</span>
+            </div>
+          </a>
+
+          <ul class="text-xs text-slate-600 space-y-2 mt-2 mb-4">
+            <li>
+              <a href="https://www.youtube.com/results?search_query=%EB%B8%8C%EB%A3%A8+%EB%AC%B4%EC%9E%91%EC%A0%95+%EB%94%B0%EB%9D%BC%ED%95%98%EA%B3%A0+%EB%A7%88%EC%8A%A4%ED%84%B0%ED%95%98%EA%B8%B0" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>브루 무작정 따라하기 기초 & 내보내기</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/results?search_query=Vrew+%EC%9E%90%EB%8F%99+%EC%9E%90%EB%A7%89+%EB%8B%AC%EA%B3%A0+%EC%B4%AC%EC%98%81%ED%95%9C+%EC%98%81%EC%83%81+%EC%Removed%ED%8E%B8%EC%A7%91" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>자동 자막 달고 촬영 영상 컷편집하는 법</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/results?search_query=AI%EA%B0%80+%EC%98%81%EC%83%81%ED%8E%B8%EC%A7%91%EC%9D%84+%EB%8F%84%EC%99%80%EC%A4%80%EB%8B%A4%EA%B3%A0+Vrew" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B3DFF] hover:underline flex items-start gap-1.5">
+                <i class="fa-brands fa-youtube text-red-500 mt-0.5"></i>
+                <span>무료 AI 영상편집 Vrew 설치부터 마스터</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex gap-2 pt-3 border-t border-slate-100">
+          <a href="https://www.youtube.com/results?search_query=%EC%89%BD%EA%B3%A0+%ED%8E%B8%ED%95%9C+AI+%EC%98%81%EC%83%81%ED%8E%B8%EC%A7%91%EA%B8%B0+%EB%B8%8C%EB%A3%A8+Vrew" target="_blank" rel="noopener noreferrer" 
+             class="flex-1 py-2 rounded-lg bg-purple-50 text-[#8B3DFF] hover:bg-purple-100 font-bold text-xs text-center transition flex items-center justify-center gap-1">
+            <i class="fa-brands fa-youtube"></i> 특강 보기
+          </a>
+          <a href="https://vrew.ai/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-lg text-xs font-semibold">공식</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 원본 Gamma 포털 사이트 연결 -->
+  <section id="origin-sites" class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+      <div class="text-center mb-6">
+        <span class="text-xs font-mono font-bold text-[#8B3DFF] uppercase tracking-wider">SOURCE DOMAINS</span>
+        <h3 class="text-lg font-bold text-slate-900 mt-1">통합된 원본 Gamma 웹사이트</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <a href="https://pjy-8fp5g9g.gamma.site/" target="_blank" rel="noopener noreferrer" 
+           class="p-4 rounded-xl border border-slate-200 hover:border-[#8B3DFF] hover:bg-purple-50/20 transition flex items-center justify-between group">
+          <div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-[#8B3DFF]">강사 소개</div>
+            <div class="text-[11px] font-mono text-slate-400">https://pjy-8fp5g9g.gamma.site/</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-[#8B3DFF]"></i>
+        </a>
+        <a href="https://index-lva4j7k.gamma.site/" target="_blank" rel="noopener noreferrer" 
+           class="p-4 rounded-xl border border-slate-200 hover:border-[#8B3DFF] hover:bg-purple-50/20 transition flex items-center justify-between group">
+          <div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-[#8B3DFF]">디지털 리터러시 인덱스</div>
+            <div class="text-[11px] font-mono text-slate-400">https://index-lva4j7k.gamma.site/</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-[#8B3DFF]"></i>
+        </a>
+        <a href="https://ai-kang-ui-w5jmuey.gamma.site/" target="_blank" rel="noopener noreferrer" 
+           class="p-4 rounded-xl border border-slate-200 hover:border-[#8B3DFF] hover:bg-purple-50/20 transition flex items-center justify-between group">
+          <div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-[#8B3DFF]">ARAMEDUTECH 인공지능 교육</div>
+            <div class="text-[11px] font-mono text-slate-400">https://ai-kang-ui-w5jmuey.gamma.site</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-[#8B3DFF]"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 하단 플로팅 배너 위젯 -->
+  <aside id="floating-widget" class="fixed bottom-6 right-6 z-40 max-w-[260px] bg-gradient-to-br from-purple-100 via-white to-purple-50 border border-purple-200 rounded-2xl p-4 shadow-xl shadow-purple-900/10">
+    <div class="flex justify-between items-start mb-2">
+      <span class="text-[11px] font-bold text-purple-700 leading-tight">현장에서 검증하고<br>함께 나누는</span>
+      <button onclick="document.getElementById('floating-widget').style.display='none'" class="text-slate-400 hover:text-slate-600 text-xs p-1">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="text-xs font-extrabold text-slate-900 mb-3">아람에듀테크 커뮤니티</div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7F1an6ycSiKAf6k--IqgIBWQtDxa5-7_wa8I2TZIs6cFRnA/viewform" target="_blank" rel="noopener noreferrer"
+       class="block w-full py-2 bg-[#8B3DFF] hover:bg-[#782ee6] text-white font-bold text-xs text-center rounded-xl transition shadow-md shadow-purple-500/20">
+      둘러보기 →
+    </a>
+  </aside>
+
+  <!-- 푸터 영역 -->
+  <footer id="contact" class="mt-auto bg-white border-t border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <span>ARAM EdTech & AI Institute</span>
+        </div>
+        <p class="text-xs text-slate-500 max-w-lg leading-relaxed">
+          기관, 지자체 복지관, 학교 및 기업 임직원을 위한 맞춤형 디지털 리터러시 & 생성형 AI 교육을 기획·컨설팅합니다.
+        </p>
+        <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-600 pt-1">
+          <span><i class="fa-solid fa-phone text-[#8B3DFF] mr-1"></i> 010-4845-9997</span>
+          <a href="mailto:aramcnc@gmail.com" class="hover:text-[#8B3DFF]"><i class="fa-solid fa-envelope text-[#8B3DFF] mr-1"></i> aramcnc@gmail.com</a>
+          <span><i class="fa-solid fa-location-dot text-[#8B3DFF] mr-1"></i> 울산 남구 남중로 74번길 9-1, 3층</span>
+        </div>
+      </div>
+
+      <div class="shrink-0 w-full md:w-auto">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7F1an6ycSiKAf6k--IqgIBWQtDxa5-7_wa8I2TZIs6cFRnA/viewform" target="_blank" rel="noopener noreferrer" 
+           class="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-[#8B3DFF] text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+          <i class="fa-solid fa-clipboard-question text-purple-300"></i> 교육 상담 설문 작성하기
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-8 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-slate-400 gap-2">
+      <div>© ARAM Institute. All rights reserved.</div>
+      <div class="flex gap-4">
+        <span>PRIVACY POLICY</span>
+        <span>EDTECH LITERACY LAB</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
